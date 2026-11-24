@@ -1,134 +1,178 @@
 {
-  "lang": "vi",
-  "pageTitle": "Đàn ông 30+ và sinh viên",
-  "title": "Đàn ông 30+ thích yêu sinh viên?",
-  "eyebrow": "Threads · Sơ đồ lập luận",
+  "langs": ["vi", "en"],
+  "pageTitle": { "vi": "Đàn ông 30+ và sinh viên", "en": "Men 30+ and Students" },
+  "title": { "vi": "Đàn ông 30+ thích yêu sinh viên?", "en": "Do men over 30 prefer to date students?" },
+  "eyebrow": { "vi": "Threads · Sơ đồ lập luận", "en": "Threads · Argument map" },
   "claim": {
-    "who": "Một bài đăng trên <b>Threads</b> và các bình luận của tác giả",
-    "text": "“Giờ thì t đã hiểu tại sao mấy ông 30+ thích iu mấy bạn nữ mới ra trường hoặc svien rồi =))”",
-    "context": [
-      "Lý do tác giả đưa ra: phụ nữ đi làm tiếp xúc với đàn ông “high standard” và môi trường đề cao cá nhân, nên đòi hỏi và trải đời nhiều hơn các bạn chỉ xoay quanh việc học và giải trí.",
-      "Tác giả nói thêm: phụ nữ 25–35 “đòi hỏi quá cao so với giá trị họ mang lại”; trong một buổi gặp, các nhà đầu tư có tài sản trên 1 triệu đô nói họ không cần “một vấn đề mới”; rồi nêu ví dụ hai tỷ phú nổi tiếng."
-    ]
+    "who": { "vi": "Một bài đăng trên <b>Threads</b> và các bình luận của tác giả", "en": "A <b>Threads</b> post and the author's replies (translated from Vietnamese)" },
+    "text": {
+      "vi": "“Giờ thì t đã hiểu tại sao mấy ông 30+ thích iu mấy bạn nữ mới ra trường hoặc svien rồi =))”",
+      "en": "“Now I finally get why guys over 30 like dating fresh grads or college girls =))”"
+    },
+    "context": {
+      "vi": [
+        "Lý do tác giả đưa ra: phụ nữ đi làm tiếp xúc với đàn ông “high standard” và môi trường đề cao cá nhân, nên đòi hỏi và trải đời nhiều hơn các bạn chỉ xoay quanh việc học và giải trí.",
+        "Tác giả nói thêm: phụ nữ 25–35 “đòi hỏi quá cao so với giá trị họ mang lại”; trong một buổi gặp, các nhà đầu tư có tài sản trên 1 triệu đô nói họ không cần “một vấn đề mới”; rồi nêu ví dụ hai tỷ phú nổi tiếng."
+      ],
+      "en": [
+        "The author's reason: working women meet “high standard” men and individualistic workplaces, so they expect more and have seen more than students whose lives are study and fun.",
+        "Later replies: women 25–35 “expect too much for the value they bring”; at one meeting, investors worth over $1M said they don't need “a new problem”; then two famous billionaires are given as examples."
+      ]
+    }
   },
-  "lead": "Bài đăng có lý do, không chỉ là cảm xúc. Vấn đề nằm ở khoảng cách: bằng chứng là vài người trong một buổi gặp và chuyện người nổi tiếng, còn kết luận lại nói về “mấy ông 30+” nói chung.",
+  "lead": {
+    "vi": "Bài đăng có lý do, không chỉ là cảm xúc. Vấn đề nằm ở khoảng cách: bằng chứng là vài người trong một buổi gặp và chuyện người nổi tiếng, còn kết luận lại nói về “mấy ông 30+” nói chung.",
+    "en": "The post gives reasons, not just a feeling. The problem is the gap: the evidence is a few people at one meeting plus celebrity stories, while the conclusion is about men over 30 in general."
+  },
   "argument": {
     "premises": [
       {
         "id": "p1",
         "kind": "stated",
-        "text": "P1: Phụ nữ 25–35 đi làm, trải đời nhiều hơn nên đòi hỏi nhiều hơn sinh viên",
-        "tags": [{ "label": "Có phần đúng", "tone": "ok" }],
-        "note": "Mô tả hợp lý một xu hướng. Bản thân câu này không phải lỗi."
+        "text": { "vi": "P1: Phụ nữ 25–35 đi làm, trải đời nhiều hơn nên đòi hỏi nhiều hơn sinh viên", "en": "P1: Working women 25–35 have seen more of life, so they expect more than students" },
+        "tags": [{ "label": { "vi": "Có phần đúng", "en": "Partly true" }, "tone": "ok" }],
+        "note": { "vi": "Mô tả hợp lý một xu hướng. Bản thân câu này không phải lỗi.", "en": "A fair description of a tendency. Not a flaw in itself." }
       },
       {
         "id": "p2",
         "kind": "stated",
-        "text": "P2: Họ đòi hỏi quá cao so với giá trị họ mang lại cho đàn ông",
-        "tags": [{ "label": "Ý kiến đội lốt sự thật", "tone": "bad" }, { "label": "Ngôn ngữ dẫn dắt", "tone": "warn" }],
-        "note": "Ai đo “giá trị”? Câu này coi tình yêu là giao dịch một chiều."
+        "text": { "vi": "P2: Họ đòi hỏi quá cao so với giá trị họ mang lại cho đàn ông", "en": "P2: They expect too much for the value they bring to men" },
+        "tags": [
+          { "label": { "vi": "Ý kiến đội lốt sự thật", "en": "Opinion stated as fact" }, "tone": "bad" },
+          { "label": { "vi": "Ngôn ngữ dẫn dắt", "en": "Loaded language" }, "tone": "warn" }
+        ],
+        "note": { "vi": "Ai đo “giá trị”? Câu này coi tình yêu là giao dịch một chiều.", "en": "Who measures “value”? It treats love as a one-way deal." }
       },
       {
         "id": "p3",
         "kind": "stated",
-        "text": "P3: Vài nhà đầu tư giàu nói không cần “vấn đề mới”; hai tỷ phú vẫn được trọng dụng",
-        "tags": [{ "label": "Giai thoại", "tone": "bad" }, { "label": "Mẫu lệch", "tone": "bad" }, { "label": "Red herring", "tone": "warn" }],
-        "note": "Vài người siêu giàu không đại diện cho đàn ông 30+. Chuyện đời tư người nổi tiếng thì lạc đề và không có nguồn."
+        "text": { "vi": "P3: Vài nhà đầu tư giàu nói không cần “vấn đề mới”; hai tỷ phú vẫn được trọng dụng", "en": "P3: A few rich investors said they don't need “a new problem”; two billionaires are still admired" },
+        "tags": [
+          { "label": { "vi": "Giai thoại", "en": "Anecdote" }, "tone": "bad" },
+          { "label": { "vi": "Mẫu lệch", "en": "Biased sample" }, "tone": "bad" },
+          { "label": "Red herring", "tone": "warn" }
+        ],
+        "note": {
+          "vi": "Vài người siêu giàu không đại diện cho đàn ông 30+. Chuyện đời tư người nổi tiếng thì lạc đề và không có nguồn.",
+          "en": "A few very rich men don't represent men over 30. Celebrity private lives are off topic and unsourced."
+        }
       },
       {
         "id": "h1",
         "kind": "hidden",
-        "text": "(ngầm) Đàn ông 30+ nói chung chọn người yêu giống nhóm nhà đầu tư đó, vì đúng lý do đó",
-        "tags": [{ "label": "Khái quát vội vàng", "tone": "bad" }, { "label": "Quy về một nguyên nhân", "tone": "bad" }],
-        "note": "Cặp chênh nhiều tuổi dễ gây chú ý, nên trông phổ biến hơn thực tế."
+        "text": { "vi": "(ngầm) Đàn ông 30+ nói chung chọn người yêu giống nhóm nhà đầu tư đó, vì đúng lý do đó", "en": "(hidden) Men over 30 in general choose partners like those investors, for that same reason" },
+        "tags": [
+          { "label": { "vi": "Khái quát vội vàng", "en": "Hasty generalization" }, "tone": "bad" },
+          { "label": { "vi": "Quy về một nguyên nhân", "en": "Single cause" }, "tone": "bad" }
+        ],
+        "note": { "vi": "Cặp chênh nhiều tuổi dễ gây chú ý, nên trông phổ biến hơn thực tế.", "en": "Big age gaps get noticed, so they look more common than they are." }
       }
     ],
     "conclusion": {
-      "text": "∴ Mấy ông 30+ thích yêu sinh viên vì phụ nữ 25–35 đòi hỏi quá cao",
-      "tags": [{ "label": "Khái quát vội vàng", "tone": "bad" }, { "label": "Rập khuôn giới", "tone": "warn" }],
-      "note": "Bằng chứng chỉ đủ cho: <b>một số người đàn ông thành đạt nói họ muốn người yêu ít đòi hỏi.</b>",
-      "after": "Không còn đứng được"
+      "text": { "vi": "∴ Mấy ông 30+ thích yêu sinh viên vì phụ nữ 25–35 đòi hỏi quá cao", "en": "∴ Men over 30 prefer students because women 25–35 expect too much" },
+      "tags": [
+        { "label": { "vi": "Khái quát vội vàng", "en": "Hasty generalization" }, "tone": "bad" },
+        { "label": { "vi": "Rập khuôn giới", "en": "Gender stereotype" }, "tone": "warn" }
+      ],
+      "note": {
+        "vi": "Bằng chứng chỉ đủ cho: <b>một số người đàn ông thành đạt nói họ muốn người yêu ít đòi hỏi.</b>",
+        "en": "The evidence only supports: <b>some successful men say they want a less demanding partner.</b>"
+      }
     }
   },
-  "vennLead": "Câu “mấy ông 30+ thích yêu sinh viên” là một khẳng định về tập hợp. Đặt hình bài đăng ngụ ý cạnh hình bằng chứng cho thấy là thấy ngay khoảng cách.",
+  "vennLead": {
+    "vi": "Câu “mấy ông 30+ thích yêu sinh viên” là một khẳng định về tập hợp. Đặt hình bài đăng ngụ ý cạnh hình bằng chứng cho thấy là thấy ngay khoảng cách.",
+    "en": "“Men over 30 like dating students” is a claim about groups. Put what the post implies next to what the evidence shows and the gap is plain."
+  },
   "venn": [
     {
-      "tag": "Bài đăng ngụ ý",
+      "tag": { "vi": "Bài đăng ngụ ý", "en": "What the post implies" },
       "tone": "bad",
       "layout": "inside",
-      "a": { "label": "Đàn ông 30+" },
-      "b": { "label": "Thích yêu sinh viên" },
-      "note": "Gần như mọi đàn ông 30+ đều nằm trong nhóm thích người yêu rất trẻ.",
-      "cardNote": "Ngụ ý: <b>đàn ông 30+ nói chung</b> thích người yêu là sinh viên."
+      "a": { "label": { "vi": "Đàn ông 30+", "en": "Men 30+" } },
+      "b": { "label": { "vi": "Thích yêu sinh viên", "en": "Like dating students" } },
+      "note": { "vi": "Gần như mọi đàn ông 30+ đều nằm trong nhóm thích người yêu rất trẻ.", "en": "Nearly every man over 30 sits inside the group that wants a much younger partner." },
+      "cardNote": { "vi": "Ngụ ý: <b>đàn ông 30+ nói chung</b> thích người yêu là sinh viên.", "en": "Implied: <b>men over 30 in general</b> want a student partner." }
     },
     {
-      "tag": "Bằng chứng cho thấy",
+      "tag": { "vi": "Bằng chứng cho thấy", "en": "What the evidence shows" },
       "tone": "ok",
       "layout": "overlap",
-      "a": { "label": "Đàn ông 30+" },
-      "b": { "label": "Yêu sinh viên" },
-      "items": { "a": ["yêu người", "gần tuổi"], "b": ["bạn", "cùng lứa"], "both": ["vài nhà", "đầu tư"] },
+      "a": { "label": { "vi": "Đàn ông 30+", "en": "Men 30+" } },
+      "b": { "label": { "vi": "Yêu sinh viên", "en": "Date students" } },
+      "items": {
+        "a": { "vi": ["yêu người", "gần tuổi"], "en": ["date near", "their age"] },
+        "b": { "vi": ["bạn", "cùng lứa"], "en": ["peers", "their age"] },
+        "both": { "vi": ["vài nhà", "đầu tư"], "en": ["a few", "investors"] }
+      },
       "dots": 3,
-      "note": "Có một vùng giao, và nó <b>dễ gây chú ý</b>. Nhưng phần lớn các cặp đôi chỉ chênh nhau vài tuổi.",
-      "cardNote": "Có vùng giao, và nó dễ gây chú ý. <b>Bằng chứng chỉ nằm trong vùng đó.</b>"
+      "note": { "vi": "Có một vùng giao, và nó <b>dễ gây chú ý</b>. Nhưng phần lớn các cặp đôi chỉ chênh nhau vài tuổi.", "en": "There is an overlap, and it <b>gets noticed</b>. But most couples are only a few years apart." },
+      "cardNote": { "vi": "Có vùng giao, và nó dễ gây chú ý. <b>Bằng chứng chỉ nằm trong vùng đó.</b>", "en": "The overlap exists and gets noticed. <b>All the evidence sits inside it.</b>" }
     }
   ],
-  "testsLead": "Bấm nút để gạch một tiền đề và xem kết luận còn đứng được không.",
+  "testsLead": { "vi": "Bấm nút để gạch một tiền đề và xem kết luận còn đứng được không.", "en": "Strike a premise and watch whether the conclusion still stands." },
   "tests": [
     {
       "target": "h1",
-      "button": "tiền đề ngầm",
-      "kind": "Tiền đề ngầm · đổi vai",
-      "title": "Cùng lập luận, đổi giới",
-      "parallels": [
-        ["Vài nữ doanh nhân giàu nói thích trai trẻ", "phụ nữ 30+ đều thích trai trẻ?", "nên"],
-        ["Vài nhà đầu tư nói không cần “vấn đề mới”", "đàn ông 30+ đều nghĩ vậy?", "nên"],
-        ["Một cặp chênh 10 tuổi gây chú ý", "chênh nhiều tuổi là phổ biến?", "nên"]
-      ],
-      "body": ["Nếu bản đổi vai nghe vô lý, bản gốc cũng có cùng lỗi: <b>lấy vài người nổi bật để nói về cả một nhóm.</b>"]
+      "button": { "vi": "tiền đề ngầm", "en": "hidden premise" },
+      "kind": { "vi": "Tiền đề ngầm · đổi vai", "en": "Hidden premise · swap the roles" },
+      "title": { "vi": "Cùng lập luận, đổi giới", "en": "Same reasoning, genders swapped" },
+      "parallels": {
+        "vi": [
+          ["Vài nữ doanh nhân giàu nói thích trai trẻ", "phụ nữ 30+ đều thích trai trẻ?", "nên"],
+          ["Vài nhà đầu tư nói không cần “vấn đề mới”", "đàn ông 30+ đều nghĩ vậy?", "nên"],
+          ["Một cặp chênh 10 tuổi gây chú ý", "chênh nhiều tuổi là phổ biến?", "nên"]
+        ],
+        "en": [
+          ["A few rich businesswomen like younger men", "all women over 30 do?", "so"],
+          ["A few investors don't want “a new problem”", "all men over 30 think so?", "so"],
+          ["One couple with a 10-year gap gets noticed", "big gaps are common?", "so"]
+        ]
+      },
+      "body": {
+        "vi": ["Nếu bản đổi vai nghe vô lý, bản gốc cũng có cùng lỗi: <b>lấy vài người nổi bật để nói về cả một nhóm.</b>"],
+        "en": ["If the swapped version sounds wrong, the original has the same flaw: <b>a few visible people stand in for a whole group.</b>"]
+      }
     },
     {
       "target": "p3",
       "button": "P3",
-      "kind": "Bằng chứng · ai được hỏi?",
-      "title": "Mẫu này nói lên điều gì?",
-      "body": [
-        "Những người được nghe là vài nhà đầu tư có tài sản trên 1 triệu đô, trong một buổi gặp tác giả tham dự. Họ không đại diện cho đàn ông 30+, và không ai hỏi các bạn sinh viên hay phụ nữ 25–35.",
-        "Ví dụ hai tỷ phú là chuyện đời tư người nổi tiếng, không kèm nguồn, và không nói gì về cách một người bình thường chọn người yêu: <b>red herring</b>."
-      ]
+      "kind": { "vi": "Bằng chứng · ai được hỏi?", "en": "Evidence · who was asked?" },
+      "title": { "vi": "Mẫu này nói lên điều gì?", "en": "What does this sample show?" },
+      "body": {
+        "vi": [
+          "Những người được nghe là vài nhà đầu tư có tài sản trên 1 triệu đô, trong một buổi gặp tác giả tham dự. Họ không đại diện cho đàn ông 30+, và không ai hỏi các bạn sinh viên hay phụ nữ 25–35.",
+          "Ví dụ hai tỷ phú là chuyện đời tư người nổi tiếng, không kèm nguồn, và không nói gì về cách một người bình thường chọn người yêu: <b>red herring</b>."
+        ],
+        "en": [
+          "The voices are a few investors worth over $1M at one meeting the author attended. They don't represent men over 30, and nobody asked students or women 25–35.",
+          "The two billionaires are celebrity gossip with no source, and say nothing about how ordinary people choose partners: a <b>red herring</b>."
+        ]
+      }
     },
     {
       "target": "p2",
       "button": "P2",
-      "kind": "Tiền đề · ai định giá?",
-      "title": "“Đòi hỏi quá cao so với giá trị” là sự thật hay ý kiến?",
-      "body": [
-        "Đây là đánh giá của một phía, được nói như sự thật. Thử hỏi ngược: đàn ông 30+ có đòi hỏi quá cao so với giá trị họ mang lại không? Cùng một câu, chỉ đổi người bị định giá."
-      ]
+      "kind": { "vi": "Tiền đề · ai định giá?", "en": "Premise · who sets the price?" },
+      "title": { "vi": "“Đòi hỏi quá cao so với giá trị” là sự thật hay ý kiến?", "en": "Is “expect too much for their value” a fact or an opinion?" },
+      "body": {
+        "vi": ["Đây là đánh giá của một phía, được nói như sự thật. Thử hỏi ngược: đàn ông 30+ có đòi hỏi quá cao so với giá trị họ mang lại không? Cùng một câu, chỉ đổi người bị định giá."],
+        "en": ["It is one side's judgment, said as if it were a fact. Ask it the other way: do men over 30 expect too much for the value they bring? Same sentence, different person being priced."]
+      }
     }
   ],
   "steelman": {
-    "title": "Cách đọc thiện chí",
-    "quote": "Một số người đàn ông thành đạt muốn người yêu ít đòi hỏi, và điều đó có thể khiến họ tìm người trẻ hơn.",
-    "body": [
-      "Câu này hợp với bằng chứng: nó nói về một nhóm người và một lý do, không phải quy luật của mọi đàn ông 30+.",
-      "Khi bình luận, hãy nhắm vào lập luận chứ không nhắm vào người viết."
-    ]
-  },
-  "labels": {
-    "mapTitle": "Lập luận, viết đầy đủ",
-    "vennTitle": "Cùng khẳng định, vẽ bằng tập hợp",
-    "testsTitle": "Thử từng chỗ yếu",
-    "legendStated": "tiền đề được nói ra",
-    "legendHidden": "tiền đề ngầm mà kết luận cần",
-    "strike": "Gạch bỏ",
-    "restore": "Khôi phục",
-    "refuted": "Bị bác bỏ",
-    "stateNone": "Mọi tiền đề còn đứng, kết luận vẫn được suy ra.",
-    "stateSome": "Một tiền đề mà kết luận cần đã bị gạch. Kết luận không còn đứng được."
+    "title": { "vi": "Cách đọc thiện chí", "en": "The charitable reading" },
+    "quote": {
+      "vi": "Một số người đàn ông thành đạt muốn người yêu ít đòi hỏi, và điều đó có thể khiến họ tìm người trẻ hơn.",
+      "en": "Some successful men want a less demanding partner, and that can lead them to date younger women."
+    },
+    "body": {
+      "vi": ["Câu này hợp với bằng chứng: nó nói về một nhóm người và một lý do, không phải quy luật của mọi đàn ông 30+.", "Khi bình luận, hãy nhắm vào lập luận chứ không nhắm vào người viết."],
+      "en": ["That fits the evidence: it is about one group and one reason, not a rule for every man over 30.", "When you reply, aim at the argument, not at the author."]
+    }
   },
   "card": {
-    "eyebrow": "Kiểm tra tư duy phản biện · Threads",
-    "headline": "“Giờ thì t đã hiểu tại sao mấy ông 30+ thích iu mấy bạn nữ mới ra trường hoặc svien rồi =))”"
+    "eyebrow": { "vi": "Kiểm tra tư duy phản biện · Threads", "en": "Critical thinking check · Threads" }
   }
 }

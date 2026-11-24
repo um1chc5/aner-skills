@@ -69,13 +69,15 @@
 <div class="page" id="app"></div>
 <script id="data" type="application/json">/*__DATA__*/</script>
 <script>
+/*__I18N__*/
 /*__VENN__*/
 </script>
 <script>
 (() => {
-  const D = JSON.parse(document.getElementById('data').textContent)
+  const RAW = JSON.parse(document.getElementById('data').textContent)
+  const D = ctvLocalize(RAW, RAW._lang || ctvLangs(RAW)[0])
   const C = D.card || {}
-  const L = Object.assign({ mapTitle: 'The argument, written out', legendStated: 'stated premise', legendHidden: 'unstated premise the claim needs' }, D.labels || {})
+  const L = D.L
   const h = (s) => String(s ?? '')
   const tags = (arr) => `<div class="tags">${(arr || []).map((t) => `<span class="tag ${t.tone || 'warn'}">${h(t.label)}</span>`).join('')}</div>`
   // The card can use shorter wording than the page: card.premises / card.conclusion override by index.

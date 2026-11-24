@@ -1,4 +1,6 @@
+<meta charset="utf-8">
 <title>__TITLE__</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +33,7 @@
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
 .wrap {
-  max-width: 1040px; margin: 0 auto; display: grid; gap: 32px;
+  max-width: 1680px; margin: 0 auto; display: grid; gap: 32px;
   padding-block: 32px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
@@ -128,6 +130,26 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
 .steel h3 { font-size: 18px; }
 .steel p { color: var(--muted); }
 .steel q { color: var(--ink); font-weight: 600; }
+.workspace { display: grid; gap: 32px; }
+@media (min-width: 1100px) {
+  .workspace { grid-template-columns: minmax(0, 1.75fr) minmax(320px, 1fr); gap: 24px; align-items: start; }
+  .workspace.solo { grid-template-columns: 1fr; }
+  .workspace .tests { grid-template-columns: 1fr; }
+  .workspace .tests-sec { gap: 10px; }
+  .workspace .test { padding: 14px; gap: 8px; }
+  .wrap > header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+  .wrap > header > .eyebrow, .wrap > header > h1 { grid-column: 1 / -1; }
+  .wrap > header .claim { max-width: none; }
+}
+@media (min-width: 1100px) and (min-height: 700px) {
+  .workspace .map-sec { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+}
+.toolbar { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.seg { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--sheet); }
+.seg button { font: inherit; font-size: 13px; font-weight: 700; padding: 5px 12px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.seg button + button { border-left: 1.5px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) { .anode, .stamp, .amap-wires path { transition: none; } }
 </style>
 
@@ -135,21 +157,43 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
 
 <script id="data" type="application/json">/*__DATA__*/</script>
 <script>
+/*__I18N__*/
 /*__VENN__*/
 </script>
 <script>
 (() => {
-  const D = JSON.parse(document.getElementById('data').textContent)
-  const L = Object.assign(
-    {
-      mapTitle: 'The argument, written out', vennTitle: 'The same claim as sets', testsTitle: 'Test the weak premises',
-      legendStated: 'stated premise', legendHidden: 'unstated premise the claim needs',
-      strike: 'Strike', restore: 'Restore', refuted: 'Refuted', after: 'No longer follows',
-      stateNone: 'Every premise is standing, so the conclusion still follows.',
-      stateSome: 'A premise the conclusion needs is gone. It no longer follows.',
-    },
-    D.labels || {},
-  )
+  const RAW = JSON.parse(document.getElementById('data').textContent)
+  const LANGS = ctvLangs(RAW)
+  const THEMES = ['auto', 'light', 'dark']
+  const store = {
+    get(k) { try { return localStorage.getItem(k) } catch { return null } },
+    set(k, v) { try { localStorage.setItem(k, v) } catch {} },
+  }
+  let lang = LANGS.includes(store.get('ctv-lang')) ? store.get('ctv-lang') : LANGS[0]
+  let theme = THEMES.includes(store.get('ctv-theme')) ? store.get('ctv-theme') : 'auto'
+  let observer = null
+  const struckIds = new Set() // kept across language switches
+
+  function applyTheme() {
+    if (theme === 'auto') document.documentElement.removeAttribute('data-theme')
+    else document.documentElement.setAttribute('data-theme', theme)
+  }
+
+  function toolbar(L) {
+    const seg = (name, attr, items, current) =>
+      `<div class="seg" role="group" aria-label="${name}">${items
+        .map(([v, label]) => `<button type="button" data-${attr}="${v}" aria-pressed="${v === current}">${label}</button>`)
+        .join('')}</div>`
+    return `<div class="toolbar">
+      ${LANGS.length > 1 ? seg(L.langLabel, 'lang-opt', LANGS.map((l) => [l, (RAW.langNames && RAW.langNames[l]) || l.toUpperCase()]), lang) : ''}
+      ${seg(L.themeLabel, 'theme-opt', [['auto', L.themeAuto], ['light', L.themeLight], ['dark', L.themeDark]], theme)}
+    </div>`
+  }
+
+  function render() {
+  const D = ctvLocalize(RAW, lang)
+  const L = D.L
+  document.documentElement.lang = lang
   const h = (s) => String(s ?? '')
   const tags = (arr) => `<span class="flaws">${(arr || []).map((t) => `<span class="flaw ${t.tone || 'warn'}">${h(t.label)}</span>`).join('')}</span>`
   const node = (p, cls) =>
@@ -157,7 +201,7 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
 
   const A = D.argument
   const ps = A.premises
-  let html = `<header>
+  let html = `${toolbar(L)}<header>
     ${D.eyebrow ? `<div class="eyebrow">${h(D.eyebrow)}</div>` : ''}
     <h1>${h(D.title)}</h1>
     <div class="claim">
@@ -166,8 +210,9 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
       ${(D.claim.context || []).map((c) => `<p class="ctx">${h(c)}</p>`).join('')}
     </div>
     ${D.lead ? `<p class="lead">${D.lead}</p>` : ''}
-  </header>
-  <section aria-labelledby="map-title">
+  </header>`
+  const hasTests = D.tests && D.tests.length
+  const mapSec = `<section class="map-sec" aria-labelledby="map-title">
     <h2 id="map-title">${h(L.mapTitle)}</h2>
     <figure class="amap" id="amap">
       <div class="amap-row" style="--n:${Math.min(ps.length, 4)}">${ps.map((p) => node(p, p.kind === 'hidden' ? 'hid' : '')).join('')}</div>
@@ -175,10 +220,12 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
       ${node({ id: 'c', ...A.conclusion }, 'concl')}
     </figure>
     <div class="legend"><span><i></i>${h(L.legendStated)}</span><span><i class="h"></i>${h(L.legendHidden)}</span></div>
+    ${hasTests ? '<p class="state" id="state" aria-live="polite"></p>' : ''}
   </section>`
+  let after = ''
 
   if (D.venn && D.venn.length) {
-    html += `<section aria-labelledby="venn-title">
+    after += `<section aria-labelledby="venn-title">
       <h2 id="venn-title">${h(L.vennTitle)}</h2>
       ${D.vennLead ? `<p class="lead">${D.vennLead}</p>` : ''}
       <div class="venns" style="--vn:${Math.min(D.venn.length, 3)}">${D.venn
@@ -187,8 +234,9 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
     </section>`
   }
 
-  if (D.tests && D.tests.length) {
-    html += `<section aria-labelledby="tests-title">
+  let testsSec = ''
+  if (hasTests) {
+    testsSec = `<section class="tests-sec" aria-labelledby="tests-title">
       <h2 id="tests-title">${h(L.testsTitle)}</h2>
       ${D.testsLead ? `<p class="lead">${D.testsLead}</p>` : ''}
       <div class="tests">${D.tests
@@ -202,17 +250,18 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
           </article>`,
         )
         .join('')}</div>
-      <p class="state" id="state" aria-live="polite"></p>
     </section>`
   }
 
   if (D.steelman) {
-    html += `<section class="steel" aria-labelledby="steel-title">
+    after += `<section class="steel" aria-labelledby="steel-title">
       <h3 id="steel-title">${h(D.steelman.title)}</h3>
       ${D.steelman.quote ? `<p><q>${h(D.steelman.quote)}</q></p>` : ''}
       ${(D.steelman.body || []).map((p) => `<p>${p}</p>`).join('')}
     </section>`
   }
+  // Wide screens: the map stays in view on the left while the tests (and their strike buttons) sit on the right.
+  html += `<div class="workspace${hasTests ? '' : ' solo'}">${mapSec}${testsSec}</div>${after}`
   document.getElementById('app').innerHTML = html
 
   const amap = document.getElementById('amap')
@@ -255,12 +304,44 @@ button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 
       const n = amap.querySelector(`[data-node="${CSS.escape(b.dataset.target)}"]`)
       if (!n) return
       const on = n.classList.toggle('struck')
+      if (on) struckIds.add(b.dataset.target)
+      else struckIds.delete(b.dataset.target)
       b.setAttribute('aria-pressed', String(on))
       b.textContent = (on ? L.restore : L.strike) + ' · ' + (b.dataset.label || b.dataset.target)
       sync()
     }),
   )
-  new ResizeObserver(drawWires).observe(amap)
+  struckIds.forEach((id) => {
+    const n = amap.querySelector(`[data-node="${CSS.escape(id)}"]`)
+    const b = document.querySelector(`button.toggle[data-target="${CSS.escape(id)}"]`)
+    if (n) n.classList.add('struck')
+    if (b) {
+      b.setAttribute('aria-pressed', 'true')
+      b.textContent = L.restore + ' · ' + (b.dataset.label || id)
+    }
+  })
+  document.querySelectorAll('[data-lang-opt]').forEach((b) =>
+    b.addEventListener('click', () => {
+      lang = b.dataset.langOpt
+      store.set('ctv-lang', lang)
+      render()
+    }),
+  )
+  document.querySelectorAll('[data-theme-opt]').forEach((b) =>
+    b.addEventListener('click', () => {
+      theme = b.dataset.themeOpt
+      store.set('ctv-theme', theme)
+      applyTheme()
+      document.querySelectorAll('[data-theme-opt]').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.themeOpt === theme)))
+    }),
+  )
+  if (observer) observer.disconnect()
+  observer = new ResizeObserver(drawWires)
+  observer.observe(amap)
   drawWires()
+  }
+
+  applyTheme()
+  render()
 })()
 </script>

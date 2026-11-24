@@ -6,9 +6,10 @@ Agent skills for Claude Code (and other agents that read `SKILL.md` folders).
 
 | Skill | What it does |
 |---|---|
-| [critical-thinking-viz](skills/critical-thinking-viz/SKILL.md) | Turns a claim, post or tweet into an argument map with stated and hidden premises, fallacy and bias labels, Venn diagrams and counterexample tests. Outputs an interactive HTML page, a 16:9 PNG infographic for social replies, or both. |
+| [critical-thinking-viz](skills/critical-thinking-viz/SKILL.md) | Turns a claim, post or tweet into an argument map with stated and hidden premises, fallacy and bias labels, Venn diagrams and counterexample tests. Outputs an interactive HTML page (language switch, light/dark theme, map pinned beside the tests on wide screens), 16:9 PNG infographics for social replies, or both. Vietnamese + English by default. |
 
-![Example card](skills/critical-thinking-viz/examples/threads-30plus.png)
+![Example card (English)](skills/critical-thinking-viz/examples/threads-30plus.en.png)
+![Example card (Tiếng Việt)](skills/critical-thinking-viz/examples/threads-30plus.vi.png)
 
 ## Install
 
@@ -38,4 +39,4 @@ cd skills/critical-thinking-viz
 node scripts/build.mjs both examples/math-subfield-cs.json ./out
 ```
 
-This writes `out/page.html` and `out/card.png`.
+This writes `out/page.html` and one card per language: `out/card.en.png`, `out/card.vi.png`.

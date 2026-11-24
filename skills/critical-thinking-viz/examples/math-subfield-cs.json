@@ -1,60 +1,131 @@
 {
-  "lang": "en",
-  "pageTitle": "Is Math Now Part of CS?",
-  "title": "Is math now a subfield of computer science?",
-  "eyebrow": "X · Argument map",
+  "langs": ["en", "vi"],
+  "pageTitle": { "en": "Is Math Now Part of CS?", "vi": "Toán là nhánh của CS?" },
+  "title": { "en": "Is math now a subfield of computer science?", "vi": "Toán học giờ là một nhánh của khoa học máy tính?" },
+  "eyebrow": { "en": "X · Argument map", "vi": "X · Sơ đồ lập luận" },
   "claim": {
     "who": "<b>Pedro Domingos</b> @pmddomingos",
-    "text": "“Mathematics is now a subfield of computer science.”",
-    "context": ["Posted after a run of AI results in math: olympiad-level proofs, formal proofs in Lean, help on some open problems."]
-  },
-  "lead": "The AI results are real. The trouble is the step from that evidence to the conclusion, which only works with two premises nobody says out loud.",
-  "argument": {
-    "premises": [
-      { "id": "p1", "kind": "stated", "text": "P1: AI now solves hard math problems and writes proofs", "tags": [{ "label": "True", "tone": "ok" }], "note": "Mostly problems someone already stated: olympiads, conjectures, Lean goals." },
-      { "id": "p2", "kind": "stated", "text": "P2: Those AI systems come from computer science", "tags": [{ "label": "True", "tone": "ok" }], "note": "And they run on math: linear algebra, probability, logic." },
-      { "id": "h1", "kind": "hidden", "text": "(hidden) If a field's tools can do its work, it belongs to the tools' field", "tags": [{ "label": "Category mistake", "tone": "bad" }, { "label": "Proves too much", "tone": "bad" }], "note": "Telescopes didn't make astronomy part of optics." },
-      { "id": "h2", "kind": "hidden", "text": "(hidden) Solving given problems is all of math", "tags": [{ "label": "Hasty generalization", "tone": "bad" }], "note": "Math also picks the questions and invents the concepts." }
-    ],
-    "conclusion": {
-      "text": "∴ Math is a subfield of CS",
-      "tags": [{ "label": "Overreach", "tone": "bad" }, { "label": "Equivocation on \"subfield\"", "tone": "warn" }],
-      "note": "What the evidence supports: <b>computation is now central to how math is done.</b>",
-      "after": "No longer follows"
+    "text": { "en": "“Mathematics is now a subfield of computer science.”", "vi": "“Toán học giờ là một nhánh của khoa học máy tính.”" },
+    "context": {
+      "en": ["Posted after a run of AI results in math: olympiad-level proofs, formal proofs in Lean, help on some open problems."],
+      "vi": ["Đăng sau hàng loạt kết quả AI trong toán: chứng minh cấp olympic, chứng minh hình thức bằng Lean, đóng góp vào một số bài toán mở."]
     }
   },
-  "vennLead": "\"Math is a subfield of CS\" is a claim about containment. The AI results are evidence about the overlap.",
+  "lead": {
+    "en": "The AI results are real. The trouble is the step from that evidence to the conclusion, which only works with two premises nobody says out loud.",
+    "vi": "Các kết quả AI là có thật. Vấn đề nằm ở bước nhảy từ bằng chứng tới kết luận: nó chỉ đứng được nhờ hai tiền đề không ai nói ra."
+  },
+  "argument": {
+    "premises": [
+      {
+        "id": "p1", "kind": "stated",
+        "text": { "en": "P1: AI now solves hard math problems and writes proofs", "vi": "P1: AI giờ giải được bài toán khó và viết được chứng minh" },
+        "tags": [{ "label": { "en": "True", "vi": "Đúng" }, "tone": "ok" }],
+        "note": { "en": "Mostly problems someone already stated: olympiads, conjectures, Lean goals.", "vi": "Chủ yếu là bài toán đã có người phát biểu: olympic, giả thuyết, mục tiêu trong Lean." }
+      },
+      {
+        "id": "p2", "kind": "stated",
+        "text": { "en": "P2: Those AI systems come from computer science", "vi": "P2: Các hệ thống AI đó do khoa học máy tính tạo ra" },
+        "tags": [{ "label": { "en": "True", "vi": "Đúng" }, "tone": "ok" }],
+        "note": { "en": "And they run on math: linear algebra, probability, logic.", "vi": "Và chúng chạy trên toán: đại số tuyến tính, xác suất, logic." }
+      },
+      {
+        "id": "h1", "kind": "hidden",
+        "text": { "en": "(hidden) If a field's tools can do its work, it belongs to the tools' field", "vi": "(ngầm) Công cụ của ngành nào làm được việc của một lĩnh vực thì lĩnh vực đó thuộc ngành ấy" },
+        "tags": [
+          { "label": { "en": "Category mistake", "vi": "Nhầm phạm trù" }, "tone": "bad" },
+          { "label": { "en": "Proves too much", "vi": "Chứng minh quá nhiều" }, "tone": "bad" }
+        ],
+        "note": { "en": "Telescopes didn't make astronomy part of optics.", "vi": "Kính thiên văn không biến thiên văn học thành một nhánh của quang học." }
+      },
+      {
+        "id": "h2", "kind": "hidden",
+        "text": { "en": "(hidden) Solving given problems is all of math", "vi": "(ngầm) Giải bài toán có sẵn là toàn bộ toán học" },
+        "tags": [{ "label": { "en": "Hasty generalization", "vi": "Khái quát vội vàng" }, "tone": "bad" }],
+        "note": { "en": "Math also picks the questions and invents the concepts.", "vi": "Toán còn chọn câu hỏi nào đáng hỏi và tạo ra khái niệm mới." }
+      }
+    ],
+    "conclusion": {
+      "text": { "en": "∴ Math is a subfield of CS", "vi": "∴ Toán là một nhánh của khoa học máy tính" },
+      "tags": [
+        { "label": { "en": "Overreach", "vi": "Kết luận quá đà" }, "tone": "bad" },
+        { "label": { "en": "Equivocation on \"subfield\"", "vi": "Đánh tráo nghĩa chữ \"nhánh\"" }, "tone": "warn" }
+      ],
+      "note": {
+        "en": "What the evidence supports: <b>computation is now central to how math is done.</b>",
+        "vi": "Bằng chứng chỉ ủng hộ: <b>máy tính giờ là trung tâm của cách làm toán.</b>"
+      }
+    }
+  },
+  "vennLead": {
+    "en": "\"Math is a subfield of CS\" is a claim about containment. The AI results are evidence about the overlap.",
+    "vi": "\"Toán là nhánh của CS\" là khẳng định về quan hệ bao hàm. Các kết quả AI chỉ là bằng chứng về vùng giao."
+  },
   "venn": [
-    { "tag": "The claim", "tone": "bad", "layout": "inside", "a": { "label": "Math" }, "b": { "label": "CS" }, "note": "Math ⊂ CS: <b>nothing in math left outside CS.</b>" },
     {
-      "tag": "What the evidence shows", "tone": "ok", "layout": "overlap",
-      "a": { "label": "Math" }, "b": { "label": "CS" },
-      "items": { "a": ["choosing", "questions"], "b": ["networks,", "OS"], "both": ["AI proofs"] },
-      "dots": 3,
-      "note": "The overlap grew. <b>Every AI result lands in it.</b>"
+      "tag": { "en": "The claim", "vi": "Khẳng định" }, "tone": "bad", "layout": "inside",
+      "a": { "label": { "en": "Math", "vi": "Toán" } }, "b": { "label": "CS" },
+      "note": { "en": "Math ⊂ CS: <b>nothing in math left outside CS.</b>", "vi": "Toán ⊂ CS: <b>không phần nào của toán nằm ngoài CS.</b>" }
     },
-    { "tag": "Same rule, backwards", "tone": "warn", "layout": "inside", "a": { "label": "CS" }, "b": { "label": "Math" }, "note": "CS is built on math, so by the same rule CS ⊂ Math. <b>Both can't be true.</b>" }
+    {
+      "tag": { "en": "What the evidence shows", "vi": "Bằng chứng cho thấy" }, "tone": "ok", "layout": "overlap",
+      "a": { "label": { "en": "Math", "vi": "Toán" } }, "b": { "label": "CS" },
+      "items": {
+        "a": { "en": ["choosing", "questions"], "vi": ["chọn câu", "hỏi đáng hỏi"] },
+        "b": { "en": ["networks,", "OS"], "vi": ["mạng,", "hệ điều hành"] },
+        "both": { "en": ["AI proofs"], "vi": ["chứng minh AI"] }
+      },
+      "dots": 3,
+      "note": { "en": "The overlap grew. <b>Every AI result lands in it.</b>", "vi": "Vùng giao lớn lên. <b>Mọi kết quả AI đều nằm trong đó.</b>" }
+    },
+    {
+      "tag": { "en": "Same rule, backwards", "vi": "Cùng quy tắc, chiều ngược" }, "tone": "warn", "layout": "inside",
+      "a": { "label": "CS" }, "b": { "label": { "en": "Math", "vi": "Toán" } },
+      "note": { "en": "CS is built on math, so by the same rule CS ⊂ Math. <b>Both can't be true.</b>", "vi": "CS xây trên toán, nên theo cùng quy tắc thì CS ⊂ Toán. <b>Hai điều không thể cùng đúng.</b>" }
+    }
   ],
-  "testsLead": "Say each hidden premise out loud, then try it where you already know the answer.",
+  "testsLead": { "en": "Say each hidden premise out loud, then try it where you already know the answer.", "vi": "Nói to từng tiền đề ngầm, rồi thử nó ở chỗ bạn đã biết câu trả lời." },
   "tests": [
     {
-      "target": "h1", "button": "hidden premise 1", "kind": "Hidden premise 1 · parallel cases", "title": "Does the tool's field absorb the subject?",
-      "parallels": [
-        ["Telescopes transformed astronomy", "astronomy is part of optics?", "so"],
-        ["Statistics runs modern biology", "biology is part of statistics?", "so"],
-        ["CS is built on logic and math", "CS is part of math?", "so"]
-      ],
-      "body": ["The last line is the same rule run backwards. <b>An argument that proves too much proves nothing.</b>"]
+      "target": "h1",
+      "button": { "en": "hidden premise 1", "vi": "tiền đề ngầm 1" },
+      "kind": { "en": "Hidden premise 1 · parallel cases", "vi": "Tiền đề ngầm 1 · trường hợp song song" },
+      "title": { "en": "Does the tool's field absorb the subject?", "vi": "Ngành làm ra công cụ có nuốt luôn lĩnh vực?" },
+      "parallels": {
+        "en": [
+          ["Telescopes transformed astronomy", "astronomy is part of optics?", "so"],
+          ["Statistics runs modern biology", "biology is part of statistics?", "so"],
+          ["CS is built on logic and math", "CS is part of math?", "so"]
+        ],
+        "vi": [
+          ["Kính thiên văn thay đổi thiên văn học", "thiên văn thuộc quang học?", "nên"],
+          ["Thống kê vận hành sinh học hiện đại", "sinh học thuộc thống kê?", "nên"],
+          ["CS xây trên logic và toán", "CS thuộc toán?", "nên"]
+        ]
+      },
+      "body": {
+        "en": ["The last line is the same rule run backwards. <b>An argument that proves too much proves nothing.</b>"],
+        "vi": ["Dòng cuối là chính quy tắc đó chạy ngược. <b>Lập luận chứng minh quá nhiều thì không chứng minh được gì.</b>"]
+      }
     },
     {
-      "target": "h2", "button": "hidden premise 2", "kind": "Hidden premise 2 · what the evidence covers", "title": "Is solving problems all of math?",
-      "body": ["The breakthroughs are on problems someone already <b>stated</b>. Mathematics also decides which questions matter and invents the concepts they are written in."]
+      "target": "h2",
+      "button": { "en": "hidden premise 2", "vi": "tiền đề ngầm 2" },
+      "kind": { "en": "Hidden premise 2 · what the evidence covers", "vi": "Tiền đề ngầm 2 · bằng chứng phủ tới đâu" },
+      "title": { "en": "Is solving problems all of math?", "vi": "Giải bài toán có phải là toàn bộ toán học?" },
+      "body": {
+        "en": ["The breakthroughs are on problems someone already <b>stated</b>. Mathematics also decides which questions matter and invents the concepts they are written in."],
+        "vi": ["Các đột phá đều trên bài toán đã có người <b>phát biểu</b>. Toán học còn quyết định câu hỏi nào đáng hỏi và tạo ra khái niệm để viết câu hỏi đó."]
+      }
     }
   ],
   "steelman": {
-    "title": "The charitable reading",
-    "quote": "Computation is becoming central to how mathematics is done.",
-    "body": ["That claim fits the evidence. It is about methods, and needs neither hidden premise."]
+    "title": { "en": "The charitable reading", "vi": "Cách đọc thiện chí" },
+    "quote": { "en": "Computation is becoming central to how mathematics is done.", "vi": "Máy tính đang trở thành trung tâm của cách làm toán." },
+    "body": {
+      "en": ["That claim fits the evidence. It is about methods, and needs neither hidden premise."],
+      "vi": ["Khẳng định này khớp với bằng chứng. Nó nói về phương pháp, và không cần tiền đề ngầm nào."]
+    }
   },
-  "card": { "eyebrow": "Critical thinking check · argument map + sets" }
+  "card": { "eyebrow": { "en": "Critical thinking check · argument map + sets", "vi": "Kiểm tra tư duy phản biện · sơ đồ lập luận + tập hợp" } }
 }
