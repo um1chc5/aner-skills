@@ -1,0 +1,60 @@
+{
+  "lang": "en",
+  "pageTitle": "Is Math Now Part of CS?",
+  "title": "Is math now a subfield of computer science?",
+  "eyebrow": "X · Argument map",
+  "claim": {
+    "who": "<b>Pedro Domingos</b> @pmddomingos",
+    "text": "“Mathematics is now a subfield of computer science.”",
+    "context": ["Posted after a run of AI results in math: olympiad-level proofs, formal proofs in Lean, help on some open problems."]
+  },
+  "lead": "The AI results are real. The trouble is the step from that evidence to the conclusion, which only works with two premises nobody says out loud.",
+  "argument": {
+    "premises": [
+      { "id": "p1", "kind": "stated", "text": "P1: AI now solves hard math problems and writes proofs", "tags": [{ "label": "True", "tone": "ok" }], "note": "Mostly problems someone already stated: olympiads, conjectures, Lean goals." },
+      { "id": "p2", "kind": "stated", "text": "P2: Those AI systems come from computer science", "tags": [{ "label": "True", "tone": "ok" }], "note": "And they run on math: linear algebra, probability, logic." },
+      { "id": "h1", "kind": "hidden", "text": "(hidden) If a field's tools can do its work, it belongs to the tools' field", "tags": [{ "label": "Category mistake", "tone": "bad" }, { "label": "Proves too much", "tone": "bad" }], "note": "Telescopes didn't make astronomy part of optics." },
+      { "id": "h2", "kind": "hidden", "text": "(hidden) Solving given problems is all of math", "tags": [{ "label": "Hasty generalization", "tone": "bad" }], "note": "Math also picks the questions and invents the concepts." }
+    ],
+    "conclusion": {
+      "text": "∴ Math is a subfield of CS",
+      "tags": [{ "label": "Overreach", "tone": "bad" }, { "label": "Equivocation on \"subfield\"", "tone": "warn" }],
+      "note": "What the evidence supports: <b>computation is now central to how math is done.</b>",
+      "after": "No longer follows"
+    }
+  },
+  "vennLead": "\"Math is a subfield of CS\" is a claim about containment. The AI results are evidence about the overlap.",
+  "venn": [
+    { "tag": "The claim", "tone": "bad", "layout": "inside", "a": { "label": "Math" }, "b": { "label": "CS" }, "note": "Math ⊂ CS: <b>nothing in math left outside CS.</b>" },
+    {
+      "tag": "What the evidence shows", "tone": "ok", "layout": "overlap",
+      "a": { "label": "Math" }, "b": { "label": "CS" },
+      "items": { "a": ["choosing", "questions"], "b": ["networks,", "OS"], "both": ["AI proofs"] },
+      "dots": 3,
+      "note": "The overlap grew. <b>Every AI result lands in it.</b>"
+    },
+    { "tag": "Same rule, backwards", "tone": "warn", "layout": "inside", "a": { "label": "CS" }, "b": { "label": "Math" }, "note": "CS is built on math, so by the same rule CS ⊂ Math. <b>Both can't be true.</b>" }
+  ],
+  "testsLead": "Say each hidden premise out loud, then try it where you already know the answer.",
+  "tests": [
+    {
+      "target": "h1", "button": "hidden premise 1", "kind": "Hidden premise 1 · parallel cases", "title": "Does the tool's field absorb the subject?",
+      "parallels": [
+        ["Telescopes transformed astronomy", "astronomy is part of optics?", "so"],
+        ["Statistics runs modern biology", "biology is part of statistics?", "so"],
+        ["CS is built on logic and math", "CS is part of math?", "so"]
+      ],
+      "body": ["The last line is the same rule run backwards. <b>An argument that proves too much proves nothing.</b>"]
+    },
+    {
+      "target": "h2", "button": "hidden premise 2", "kind": "Hidden premise 2 · what the evidence covers", "title": "Is solving problems all of math?",
+      "body": ["The breakthroughs are on problems someone already <b>stated</b>. Mathematics also decides which questions matter and invents the concepts they are written in."]
+    }
+  ],
+  "steelman": {
+    "title": "The charitable reading",
+    "quote": "Computation is becoming central to how mathematics is done.",
+    "body": ["That claim fits the evidence. It is about methods, and needs neither hidden premise."]
+  },
+  "card": { "eyebrow": "Critical thinking check · argument map + sets" }
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="__LANG__">
+<head>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  /* 1600 × 900 social card (rendered at 2x). Left: argument map. Right: up to two set pictures, or the charitable reading. */
+  :root {
+    --bg: #f6f3ec; --sheet: #fffdf8; --ink: #1d2330; --muted: #5d6475; --line: #ddd5c4;
+    --mark: #ffd93b; --accent: #2b5be8; --bad: #d64545; --good: #1f9a64;
+    --f-display: 'Bricolage Grotesque', 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+    --f-body: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1600px; height: 900px; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--f-body); }
+  .page { width: 1600px; height: 900px; padding: 34px 48px 40px; display: grid; grid-template-rows: auto 1fr; gap: 22px; }
+  .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-family: var(--f-display); font-weight: 800; font-size: 40px; line-height: 1.12; margin-top: 6px; text-wrap: balance; }
+  .body { display: grid; grid-template-columns: 1fr 512px; gap: 24px; min-height: 0; }
+  .body.solo { grid-template-columns: 1fr; }
+  .panel { position: relative; background: var(--sheet); border: 1.5px solid var(--line); border-radius: 22px; padding: 18px 24px; min-height: 0; }
+  .ptitle { font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .left { display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 0; }
+  .row { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 14px; margin-top: 16px; position: relative; z-index: 1; }
+  .node { border: 3px solid var(--line); border-radius: 16px; background: var(--sheet); padding: 14px; height: var(--h, 300px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; overflow: hidden; }
+  .node .t { font-size: var(--fs, 20px); font-weight: 700; line-height: 1.3; }
+  .node .n { font-size: 15px; font-weight: 500; line-height: 1.35; color: var(--muted); }
+  .node.hid { border-style: dashed; border-color: #a58a1f; background: #fff3c4; }
+  .node.concl { border-color: var(--accent); background: #e6ecfd; justify-self: center; width: 60%; height: auto; min-height: 150px; position: relative; z-index: 1; }
+  .gap { min-height: 70px; }
+  .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .tag { font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; line-height: 1.3; }
+  .tag.ok { color: var(--good); background: #dcf1e6; }
+  .tag.bad { color: #fff; background: var(--bad); }
+  .tag.warn { color: var(--ink); background: var(--mark); }
+  .wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .legend { display: flex; gap: 22px; font-size: 14px; color: var(--muted); margin-top: 14px; }
+  .legend i { display: inline-block; width: 26px; height: 16px; border-radius: 5px; vertical-align: -3px; margin-right: 8px; border: 2.5px solid var(--line); background: var(--sheet); }
+  .legend i.h { border-style: dashed; border-color: #a58a1f; background: #fff3c4; }
+
+  .right { display: grid; grid-auto-rows: 1fr; gap: 0; padding: 0; }
+  .vpanel { display: grid; grid-template-rows: auto 1fr auto; gap: 8px; padding: 18px 24px; min-height: 0; }
+  .vpanel + .vpanel { border-top: 1.5px dashed var(--line); }
+  .cap { justify-self: start; font-size: 15px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+  .cap.bad { color: #fff; background: var(--bad); } .cap.ok { color: var(--good); background: #dcf1e6; } .cap.warn { color: var(--ink); background: var(--mark); }
+  .vpanel svg { width: 100%; height: 100%; min-height: 0; }
+  .vnote { font-size: 16px; line-height: 1.35; color: var(--muted); }
+  .vnote b { color: var(--ink); }
+  .va { fill: #2b5be838; stroke: var(--accent); stroke-width: 4; }
+  .vb { fill: #1f9a6433; stroke: var(--good); stroke-width: 4; }
+  .vl { font-family: var(--f-display); font-weight: 800; }
+  .vat { fill: var(--accent); } .vbt { fill: var(--good); }
+  .vt { font-family: var(--f-body); font-size: 14px; fill: var(--muted); }
+  .vtb { font-weight: 700; fill: var(--ink); }
+  .vdot { fill: var(--mark); stroke: var(--ink); stroke-width: 2; }
+  .vptr { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 3 3; }
+
+  .steel { padding: 24px; display: grid; align-content: start; gap: 14px; }
+  .steel h3 { font-family: var(--f-display); font-size: 26px; }
+  .steel q { font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .steel p { font-size: 17px; color: var(--muted); line-height: 1.45; }
+  .foot { position: absolute; right: 48px; bottom: 12px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page" id="app"></div>
+<script id="data" type="application/json">/*__DATA__*/</script>
+<script>
+/*__VENN__*/
+</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('data').textContent)
+  const C = D.card || {}
+  const L = Object.assign({ mapTitle: 'The argument, written out', legendStated: 'stated premise', legendHidden: 'unstated premise the claim needs' }, D.labels || {})
+  const h = (s) => String(s ?? '')
+  const tags = (arr) => `<div class="tags">${(arr || []).map((t) => `<span class="tag ${t.tone || 'warn'}">${h(t.label)}</span>`).join('')}</div>`
+  // The card can use shorter wording than the page: card.premises / card.conclusion override by index.
+  const ps = D.argument.premises.slice(0, 4).map((p, i) => Object.assign({}, p, (C.premises || [])[i] || {}))
+  const concl = Object.assign({}, D.argument.conclusion, C.conclusion || {})
+  const venns = (C.venn || D.venn || []).slice(0, 2)
+  const right = venns.length
+    ? `<div class="panel right">${venns
+        .map((v) => `<div class="vpanel"><span class="cap ${v.tone || 'ok'}">${h(v.tag)}</span><div class="vbox"></div><div class="vnote">${v.cardNote || v.note || ''}</div></div>`)
+        .join('')}</div>`
+    : D.steelman
+      ? `<div class="panel right steel"><h3>${h(D.steelman.title)}</h3>${D.steelman.quote ? `<q>${h(D.steelman.quote)}</q>` : ''}${(D.steelman.body || []).slice(0, 2).map((p) => `<p>${p}</p>`).join('')}</div>`
+      : ''
+
+  document.getElementById('app').innerHTML = `
+    <div>
+      ${D.eyebrow ? `<div class="eyebrow">${h(C.eyebrow || D.eyebrow)}</div>` : ''}
+      <h1>${h(C.headline || D.claim.text)}</h1>
+    </div>
+    <div class="body ${right ? '' : 'solo'}">
+      <div class="panel left" id="left">
+        <svg class="wires" id="wires"></svg>
+        <div class="ptitle">${h(L.mapTitle)}</div>
+        <div class="row" style="--n:${ps.length}">${ps
+          .map((p) => `<div class="node ${p.kind === 'hidden' ? 'hid' : ''}"><div class="t">${h(p.text)}</div>${tags(p.tags)}${p.note ? `<div class="n">${h(p.note)}</div>` : ''}</div>`)
+          .join('')}</div>
+        <div class="gap"></div>
+        <div class="node concl" id="concl"><div class="t" style="font-size:24px">${h(concl.text)}</div>${tags(concl.tags)}${concl.note ? `<div class="n">${concl.note}</div>` : ''}</div>
+        <div class="legend"><span><i></i>${h(L.legendStated)}</span><span><i class="h"></i>${h(L.legendHidden)}</span></div>
+      </div>
+      ${right}
+    </div>
+    ${C.footer ? `<div class="foot">${h(C.footer)}</div>` : ''}`
+
+  function fit() {
+    // shrink premise text until every box fits its height
+    document.querySelectorAll('.row .node').forEach((n) => {
+      let fs = 20
+      while (n.scrollHeight > n.clientHeight + 1 && fs > 13) {
+        fs -= 1
+        n.style.setProperty('--fs', fs + 'px')
+        n.querySelectorAll('.n').forEach((x) => (x.style.fontSize = Math.max(12, fs - 5) + 'px'))
+      }
+    })
+  }
+  function draw() {
+    const left = document.getElementById('left')
+    const box = left.getBoundingClientRect()
+    const end = document.getElementById('concl').getBoundingClientRect()
+    const ex = end.left + end.width / 2 - box.left
+    const ey = end.top - box.top - 4
+    let out = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#5d6475"/></marker></defs>'
+    document.querySelectorAll('.row .node').forEach((n) => {
+      const r = n.getBoundingClientRect()
+      const x = r.left + r.width / 2 - box.left
+      const y = r.bottom - box.top
+      const dash = n.classList.contains('hid') ? ' stroke-dasharray="8 7"' : ''
+      out += `<path d="M${x} ${y} C ${x} ${y + 44}, ${ex} ${ey - 44}, ${ex} ${ey}" fill="none" stroke="#5d6475" stroke-width="3"${dash} marker-end="url(#ah)"/>`
+    })
+    document.getElementById('wires').innerHTML = out
+    document.querySelectorAll('.vpanel .vbox').forEach((el, i) => {
+      el.innerHTML = vennSVG(venns[i], 464, 230, 14)
+    })
+  }
+  const run = () => { fit(); draw() }
+  ;(document.fonts ? document.fonts.ready : Promise.resolve()).then(run)
+  run()
+})()
+</script>
+</body>
+</html>

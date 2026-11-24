@@ -1,0 +1,7 @@
+{
+  "name": "aner-skills",
+  "description": "Agent skills by um1chc5: critical-thinking-viz turns a claim into an argument map, Venn diagrams and a shareable infographic.",
+  "version": "0.1.0",
+  "author": { "name": "um1chc5", "url": "https://github.com/um1chc5" },
+  "repository": "https://github.com/um1chc5/aner-skills"
+}

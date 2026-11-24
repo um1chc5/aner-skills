@@ -1,0 +1,11 @@
+{
+  "name": "aner-skills",
+  "owner": { "name": "um1chc5", "url": "https://github.com/um1chc5" },
+  "plugins": [
+    {
+      "name": "aner-skills",
+      "source": "./",
+      "description": "critical-thinking-viz: argument maps, Venn diagrams and infographics for spotting critical thinking errors."
+    }
+  ]
+}

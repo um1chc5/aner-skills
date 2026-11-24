@@ -1,0 +1,134 @@
+{
+  "lang": "vi",
+  "pageTitle": "Đàn ông 30+ và sinh viên",
+  "title": "Đàn ông 30+ thích yêu sinh viên?",
+  "eyebrow": "Threads · Sơ đồ lập luận",
+  "claim": {
+    "who": "Một bài đăng trên <b>Threads</b> và các bình luận của tác giả",
+    "text": "“Giờ thì t đã hiểu tại sao mấy ông 30+ thích iu mấy bạn nữ mới ra trường hoặc svien rồi =))”",
+    "context": [
+      "Lý do tác giả đưa ra: phụ nữ đi làm tiếp xúc với đàn ông “high standard” và môi trường đề cao cá nhân, nên đòi hỏi và trải đời nhiều hơn các bạn chỉ xoay quanh việc học và giải trí.",
+      "Tác giả nói thêm: phụ nữ 25–35 “đòi hỏi quá cao so với giá trị họ mang lại”; trong một buổi gặp, các nhà đầu tư có tài sản trên 1 triệu đô nói họ không cần “một vấn đề mới”; rồi nêu ví dụ hai tỷ phú nổi tiếng."
+    ]
+  },
+  "lead": "Bài đăng có lý do, không chỉ là cảm xúc. Vấn đề nằm ở khoảng cách: bằng chứng là vài người trong một buổi gặp và chuyện người nổi tiếng, còn kết luận lại nói về “mấy ông 30+” nói chung.",
+  "argument": {
+    "premises": [
+      {
+        "id": "p1",
+        "kind": "stated",
+        "text": "P1: Phụ nữ 25–35 đi làm, trải đời nhiều hơn nên đòi hỏi nhiều hơn sinh viên",
+        "tags": [{ "label": "Có phần đúng", "tone": "ok" }],
+        "note": "Mô tả hợp lý một xu hướng. Bản thân câu này không phải lỗi."
+      },
+      {
+        "id": "p2",
+        "kind": "stated",
+        "text": "P2: Họ đòi hỏi quá cao so với giá trị họ mang lại cho đàn ông",
+        "tags": [{ "label": "Ý kiến đội lốt sự thật", "tone": "bad" }, { "label": "Ngôn ngữ dẫn dắt", "tone": "warn" }],
+        "note": "Ai đo “giá trị”? Câu này coi tình yêu là giao dịch một chiều."
+      },
+      {
+        "id": "p3",
+        "kind": "stated",
+        "text": "P3: Vài nhà đầu tư giàu nói không cần “vấn đề mới”; hai tỷ phú vẫn được trọng dụng",
+        "tags": [{ "label": "Giai thoại", "tone": "bad" }, { "label": "Mẫu lệch", "tone": "bad" }, { "label": "Red herring", "tone": "warn" }],
+        "note": "Vài người siêu giàu không đại diện cho đàn ông 30+. Chuyện đời tư người nổi tiếng thì lạc đề và không có nguồn."
+      },
+      {
+        "id": "h1",
+        "kind": "hidden",
+        "text": "(ngầm) Đàn ông 30+ nói chung chọn người yêu giống nhóm nhà đầu tư đó, vì đúng lý do đó",
+        "tags": [{ "label": "Khái quát vội vàng", "tone": "bad" }, { "label": "Quy về một nguyên nhân", "tone": "bad" }],
+        "note": "Cặp chênh nhiều tuổi dễ gây chú ý, nên trông phổ biến hơn thực tế."
+      }
+    ],
+    "conclusion": {
+      "text": "∴ Mấy ông 30+ thích yêu sinh viên vì phụ nữ 25–35 đòi hỏi quá cao",
+      "tags": [{ "label": "Khái quát vội vàng", "tone": "bad" }, { "label": "Rập khuôn giới", "tone": "warn" }],
+      "note": "Bằng chứng chỉ đủ cho: <b>một số người đàn ông thành đạt nói họ muốn người yêu ít đòi hỏi.</b>",
+      "after": "Không còn đứng được"
+    }
+  },
+  "vennLead": "Câu “mấy ông 30+ thích yêu sinh viên” là một khẳng định về tập hợp. Đặt hình bài đăng ngụ ý cạnh hình bằng chứng cho thấy là thấy ngay khoảng cách.",
+  "venn": [
+    {
+      "tag": "Bài đăng ngụ ý",
+      "tone": "bad",
+      "layout": "inside",
+      "a": { "label": "Đàn ông 30+" },
+      "b": { "label": "Thích yêu sinh viên" },
+      "note": "Gần như mọi đàn ông 30+ đều nằm trong nhóm thích người yêu rất trẻ.",
+      "cardNote": "Ngụ ý: <b>đàn ông 30+ nói chung</b> thích người yêu là sinh viên."
+    },
+    {
+      "tag": "Bằng chứng cho thấy",
+      "tone": "ok",
+      "layout": "overlap",
+      "a": { "label": "Đàn ông 30+" },
+      "b": { "label": "Yêu sinh viên" },
+      "items": { "a": ["yêu người", "gần tuổi"], "b": ["bạn", "cùng lứa"], "both": ["vài nhà", "đầu tư"] },
+      "dots": 3,
+      "note": "Có một vùng giao, và nó <b>dễ gây chú ý</b>. Nhưng phần lớn các cặp đôi chỉ chênh nhau vài tuổi.",
+      "cardNote": "Có vùng giao, và nó dễ gây chú ý. <b>Bằng chứng chỉ nằm trong vùng đó.</b>"
+    }
+  ],
+  "testsLead": "Bấm nút để gạch một tiền đề và xem kết luận còn đứng được không.",
+  "tests": [
+    {
+      "target": "h1",
+      "button": "tiền đề ngầm",
+      "kind": "Tiền đề ngầm · đổi vai",
+      "title": "Cùng lập luận, đổi giới",
+      "parallels": [
+        ["Vài nữ doanh nhân giàu nói thích trai trẻ", "phụ nữ 30+ đều thích trai trẻ?", "nên"],
+        ["Vài nhà đầu tư nói không cần “vấn đề mới”", "đàn ông 30+ đều nghĩ vậy?", "nên"],
+        ["Một cặp chênh 10 tuổi gây chú ý", "chênh nhiều tuổi là phổ biến?", "nên"]
+      ],
+      "body": ["Nếu bản đổi vai nghe vô lý, bản gốc cũng có cùng lỗi: <b>lấy vài người nổi bật để nói về cả một nhóm.</b>"]
+    },
+    {
+      "target": "p3",
+      "button": "P3",
+      "kind": "Bằng chứng · ai được hỏi?",
+      "title": "Mẫu này nói lên điều gì?",
+      "body": [
+        "Những người được nghe là vài nhà đầu tư có tài sản trên 1 triệu đô, trong một buổi gặp tác giả tham dự. Họ không đại diện cho đàn ông 30+, và không ai hỏi các bạn sinh viên hay phụ nữ 25–35.",
+        "Ví dụ hai tỷ phú là chuyện đời tư người nổi tiếng, không kèm nguồn, và không nói gì về cách một người bình thường chọn người yêu: <b>red herring</b>."
+      ]
+    },
+    {
+      "target": "p2",
+      "button": "P2",
+      "kind": "Tiền đề · ai định giá?",
+      "title": "“Đòi hỏi quá cao so với giá trị” là sự thật hay ý kiến?",
+      "body": [
+        "Đây là đánh giá của một phía, được nói như sự thật. Thử hỏi ngược: đàn ông 30+ có đòi hỏi quá cao so với giá trị họ mang lại không? Cùng một câu, chỉ đổi người bị định giá."
+      ]
+    }
+  ],
+  "steelman": {
+    "title": "Cách đọc thiện chí",
+    "quote": "Một số người đàn ông thành đạt muốn người yêu ít đòi hỏi, và điều đó có thể khiến họ tìm người trẻ hơn.",
+    "body": [
+      "Câu này hợp với bằng chứng: nó nói về một nhóm người và một lý do, không phải quy luật của mọi đàn ông 30+.",
+      "Khi bình luận, hãy nhắm vào lập luận chứ không nhắm vào người viết."
+    ]
+  },
+  "labels": {
+    "mapTitle": "Lập luận, viết đầy đủ",
+    "vennTitle": "Cùng khẳng định, vẽ bằng tập hợp",
+    "testsTitle": "Thử từng chỗ yếu",
+    "legendStated": "tiền đề được nói ra",
+    "legendHidden": "tiền đề ngầm mà kết luận cần",
+    "strike": "Gạch bỏ",
+    "restore": "Khôi phục",
+    "refuted": "Bị bác bỏ",
+    "stateNone": "Mọi tiền đề còn đứng, kết luận vẫn được suy ra.",
+    "stateSome": "Một tiền đề mà kết luận cần đã bị gạch. Kết luận không còn đứng được."
+  },
+  "card": {
+    "eyebrow": "Kiểm tra tư duy phản biện · Threads",
+    "headline": "“Giờ thì t đã hiểu tại sao mấy ông 30+ thích iu mấy bạn nữ mới ra trường hoặc svien rồi =))”"
+  }
+}

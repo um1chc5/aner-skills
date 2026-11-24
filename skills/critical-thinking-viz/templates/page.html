@@ -1,0 +1,266 @@
+<title>__TITLE__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+/* Layout: one column. Claim, argument map (hero), optional set pictures, tests that strike premises, charitable reading. */
+:root {
+  --bg: #f6f3ec;
+  --sheet: #fffdf8;
+  --ink: #1d2330;
+  --muted: #5d6475;
+  --line: #ddd5c4;
+  --mark: #ffd93b;
+  --accent: #2b5be8;
+  --bad: #d64545;
+  --good: #1f9a64;
+  --f-display: 'Bricolage Grotesque', 'Be Vietnam Pro', system-ui, sans-serif;
+  --f-body: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171f; --sheet: #1c2130; --ink: #eef0f5; --muted: #a3aabb; --line: #333a4d;
+    --mark: #f1c93a; --accent: #7fa2ff; --bad: #f07272; --good: #4cc391; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171f; --sheet: #1c2130; --ink: #eef0f5; --muted: #a3aabb; --line: #333a4d;
+  --mark: #f1c93a; --accent: #7fa2ff; --bad: #f07272; --good: #4cc391; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+.wrap {
+  max-width: 1040px; margin: 0 auto; display: grid; gap: 32px;
+  padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); }
+h2 { font-size: clamp(20px, 3vw, 24px); }
+p { margin: 0; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lead { color: var(--muted); max-width: 68ch; }
+header, section { display: grid; gap: 12px; }
+
+.claim { background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; display: grid; gap: 8px; max-width: 680px; }
+.claim .who { font-size: 14px; color: var(--muted); }
+.claim .who b { color: var(--ink); }
+.claim blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(20px, 3.2vw, 26px); font-weight: 800; line-height: 1.3; }
+.claim .ctx { font-size: 14px; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; }
+
+.amap { position: relative; display: grid; gap: 64px; padding: 22px; background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; margin: 0; }
+.amap-row { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 12px; position: relative; z-index: 1; }
+@media (max-width: 820px) { .amap-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .amap-row { grid-template-columns: 1fr; } .amap { gap: 48px; } }
+.anode {
+  position: relative; border: 2.5px solid var(--line); border-radius: 12px; background: var(--sheet);
+  padding: 12px; font-size: 14.5px; font-weight: 600; line-height: 1.4; text-align: center;
+  display: grid; gap: 8px; align-content: center; justify-items: center; min-height: 92px; text-wrap: balance;
+  transition: opacity .35s, border-color .35s, background-color .35s;
+}
+.anode.hid { border-style: dashed; border-color: color-mix(in srgb, var(--mark) 70%, var(--ink)); background: color-mix(in srgb, var(--mark) 25%, var(--sheet)); }
+.anode.concl { justify-self: center; width: min(100%, 440px); min-height: 72px; font-weight: 700; font-size: 16px; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, var(--sheet)); position: relative; z-index: 1; }
+.amap-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.amap-wires path { transition: opacity .35s; }
+.flaws { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.flaw { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.flaw.ok { color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--sheet)); }
+.flaw.bad { color: #fff; background: var(--bad); }
+.flaw.warn { color: var(--ink); background: color-mix(in srgb, var(--mark) 70%, var(--sheet)); }
+.why { font-size: 12.5px; font-weight: 500; line-height: 1.45; color: var(--muted); }
+.stamp {
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%; rotate: -8deg;
+  font-family: var(--f-display); font-weight: 800; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+  color: var(--bad); border: 3px solid currentColor; border-radius: 6px; padding: 2px 10px; background: var(--sheet);
+  opacity: 0; scale: 1.6; transition: opacity .25s, scale .25s; pointer-events: none;
+}
+.anode.struck { opacity: .6; }
+.anode.struck > .txt { text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 2px; }
+.anode.struck .stamp { opacity: 1; scale: 1; }
+.amap.broken .anode.concl { border-style: dashed; border-color: var(--muted); background: var(--sheet); color: var(--muted); }
+.after { display: none; font-size: 13px; font-weight: 600; color: var(--bad); }
+.amap.broken .after { display: block; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 22px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; border: 2px solid var(--line); background: var(--sheet); }
+.legend i.h { border-style: dashed; border-color: color-mix(in srgb, var(--mark) 70%, var(--ink)); background: color-mix(in srgb, var(--mark) 25%, var(--sheet)); }
+
+.venns { display: grid; grid-template-columns: repeat(var(--vn, 2), minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .venns { grid-template-columns: 1fr; } }
+.venn-card { margin: 0; background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.venn-card svg { width: 100%; height: auto; display: block; max-width: 380px; justify-self: center; }
+.va { fill: color-mix(in srgb, var(--accent) 22%, transparent); stroke: var(--accent); stroke-width: 3; }
+.vb { fill: color-mix(in srgb, var(--good) 20%, transparent); stroke: var(--good); stroke-width: 3; }
+.vl { font-family: var(--f-display); font-weight: 800; }
+.vat { fill: var(--accent); } .vbt { fill: var(--good); }
+.vt { font-family: var(--f-body); font-size: 11px; fill: var(--muted); }
+.vtb { font-weight: 700; fill: var(--ink); }
+.vdot { fill: var(--mark); stroke: var(--ink); stroke-width: 1.5; }
+.vptr { stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.venn-card figcaption { font-size: 14px; color: var(--muted); }
+.venn-card figcaption b { color: var(--ink); }
+.vk { justify-self: start; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.vk.bad { color: #fff; background: var(--bad); }
+.vk.ok { color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--sheet)); }
+.vk.warn { color: var(--ink); background: color-mix(in srgb, var(--mark) 70%, var(--sheet)); }
+
+.tests { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.test { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.test .kind { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.test h3 { font-size: 18px; }
+.test p { font-size: 14px; color: var(--muted); }
+.test p b { color: var(--ink); }
+.parallels { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.parallels li { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 8px; background: color-mix(in srgb, var(--line) 35%, var(--sheet)); }
+.parallels .to { color: var(--muted); font-size: 12px; text-align: center; }
+.parallels .res { font-weight: 600; }
+button.toggle {
+  justify-self: start; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; border-radius: 12px; padding: 8px 16px;
+  color: #fff; background: var(--bad); border: 0; border-bottom: 4px solid color-mix(in srgb, var(--bad) 65%, #000);
+}
+button.toggle[aria-pressed="true"] { background: var(--muted); border-bottom-color: color-mix(in srgb, var(--muted) 65%, #000); }
+button.toggle:active { border-bottom-width: 1px; translate: 0 3px; }
+button.toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.state { font-size: 14px; color: var(--muted); min-height: 1.6em; }
+
+.steel { border-left: 4px solid var(--good); padding: 8px 0 8px 16px; display: grid; gap: 6px; max-width: 72ch; }
+.steel h3 { font-size: 18px; }
+.steel p { color: var(--muted); }
+.steel q { color: var(--ink); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .anode, .stamp, .amap-wires path { transition: none; } }
+</style>
+
+<main class="wrap" id="app"></main>
+
+<script id="data" type="application/json">/*__DATA__*/</script>
+<script>
+/*__VENN__*/
+</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('data').textContent)
+  const L = Object.assign(
+    {
+      mapTitle: 'The argument, written out', vennTitle: 'The same claim as sets', testsTitle: 'Test the weak premises',
+      legendStated: 'stated premise', legendHidden: 'unstated premise the claim needs',
+      strike: 'Strike', restore: 'Restore', refuted: 'Refuted', after: 'No longer follows',
+      stateNone: 'Every premise is standing, so the conclusion still follows.',
+      stateSome: 'A premise the conclusion needs is gone. It no longer follows.',
+    },
+    D.labels || {},
+  )
+  const h = (s) => String(s ?? '')
+  const tags = (arr) => `<span class="flaws">${(arr || []).map((t) => `<span class="flaw ${t.tone || 'warn'}">${h(t.label)}</span>`).join('')}</span>`
+  const node = (p, cls) =>
+    `<div class="anode ${cls}" data-node="${h(p.id)}"><span class="txt">${h(p.text)}</span>${tags(p.tags)}${p.note ? `<span class="why">${h(p.note)}</span>` : ''}<span class="stamp" aria-hidden="true">${h(L.refuted)}</span>${cls === 'concl' ? `<span class="after">${h(D.argument.conclusion.after || L.after)}</span>` : ''}</div>`
+
+  const A = D.argument
+  const ps = A.premises
+  let html = `<header>
+    ${D.eyebrow ? `<div class="eyebrow">${h(D.eyebrow)}</div>` : ''}
+    <h1>${h(D.title)}</h1>
+    <div class="claim">
+      ${D.claim.who ? `<span class="who">${D.claim.who}</span>` : ''}
+      <blockquote>${h(D.claim.text)}</blockquote>
+      ${(D.claim.context || []).map((c) => `<p class="ctx">${h(c)}</p>`).join('')}
+    </div>
+    ${D.lead ? `<p class="lead">${D.lead}</p>` : ''}
+  </header>
+  <section aria-labelledby="map-title">
+    <h2 id="map-title">${h(L.mapTitle)}</h2>
+    <figure class="amap" id="amap">
+      <div class="amap-row" style="--n:${Math.min(ps.length, 4)}">${ps.map((p) => node(p, p.kind === 'hidden' ? 'hid' : '')).join('')}</div>
+      <svg class="amap-wires" aria-hidden="true"></svg>
+      ${node({ id: 'c', ...A.conclusion }, 'concl')}
+    </figure>
+    <div class="legend"><span><i></i>${h(L.legendStated)}</span><span><i class="h"></i>${h(L.legendHidden)}</span></div>
+  </section>`
+
+  if (D.venn && D.venn.length) {
+    html += `<section aria-labelledby="venn-title">
+      <h2 id="venn-title">${h(L.vennTitle)}</h2>
+      ${D.vennLead ? `<p class="lead">${D.vennLead}</p>` : ''}
+      <div class="venns" style="--vn:${Math.min(D.venn.length, 3)}">${D.venn
+        .map((v) => `<figure class="venn-card"><span class="vk ${v.tone || 'ok'}">${h(v.tag)}</span>${vennSVG(v, 300, 214, 11)}<figcaption>${v.note || ''}</figcaption></figure>`)
+        .join('')}</div>
+    </section>`
+  }
+
+  if (D.tests && D.tests.length) {
+    html += `<section aria-labelledby="tests-title">
+      <h2 id="tests-title">${h(L.testsTitle)}</h2>
+      ${D.testsLead ? `<p class="lead">${D.testsLead}</p>` : ''}
+      <div class="tests">${D.tests
+        .map(
+          (t) => `<article class="test">
+            ${t.kind ? `<span class="kind">${h(t.kind)}</span>` : ''}
+            <h3>${h(t.title)}</h3>
+            ${t.parallels ? `<ul class="parallels">${t.parallels.map(([a, b, to]) => `<li><span>${h(a)}</span><span class="to">${h(to || '→')}</span><span class="res">${h(b)}</span></li>`).join('')}</ul>` : ''}
+            ${(t.body || []).map((p) => `<p>${p}</p>`).join('')}
+            ${t.target ? `<button class="toggle" type="button" data-target="${h(t.target)}" data-label="${h(t.button || '')}" aria-pressed="false">${h(L.strike)} · ${h(t.button || t.target)}</button>` : ''}
+          </article>`,
+        )
+        .join('')}</div>
+      <p class="state" id="state" aria-live="polite"></p>
+    </section>`
+  }
+
+  if (D.steelman) {
+    html += `<section class="steel" aria-labelledby="steel-title">
+      <h3 id="steel-title">${h(D.steelman.title)}</h3>
+      ${D.steelman.quote ? `<p><q>${h(D.steelman.quote)}</q></p>` : ''}
+      ${(D.steelman.body || []).map((p) => `<p>${p}</p>`).join('')}
+    </section>`
+  }
+  document.getElementById('app').innerHTML = html
+
+  const amap = document.getElementById('amap')
+  const wires = amap.querySelector('.amap-wires')
+  const state = document.getElementById('state')
+
+  function drawWires() {
+    const box = amap.getBoundingClientRect()
+    const end = amap.querySelector('.concl').getBoundingClientRect()
+    const ex = end.left + end.width / 2 - box.left
+    const ey = end.top - box.top - 4
+    let out = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="var(--muted)"/></marker></defs>'
+    const nodes = [...amap.querySelectorAll('.amap-row .anode')]
+    const lefts = new Set(nodes.map((n) => Math.round(n.getBoundingClientRect().left)))
+    if (lefts.size === 1) {
+      const r = nodes[nodes.length - 1].getBoundingClientRect()
+      out += `<path d="M${ex} ${r.bottom - box.top + 2} L ${ex} ${ey}" fill="none" stroke="var(--muted)" stroke-width="2.5" marker-end="url(#ah)"/>`
+    } else {
+      nodes.forEach((n) => {
+        const r = n.getBoundingClientRect()
+        const x = r.left + r.width / 2 - box.left
+        const y = r.bottom - box.top + 2
+        const dash = n.classList.contains('hid') ? ' stroke-dasharray="7 6"' : ''
+        out += `<path data-from="${n.dataset.node}" d="M${x} ${y} C ${x} ${y + 34}, ${ex} ${ey - 34}, ${ex} ${ey}" fill="none" stroke="var(--muted)" stroke-width="2.5"${dash} marker-end="url(#ah)"/>`
+      })
+    }
+    wires.innerHTML = out
+    sync()
+  }
+
+  function sync() {
+    const struck = [...amap.querySelectorAll('.amap-row .anode.struck')].map((n) => n.dataset.node)
+    wires.querySelectorAll('path[data-from]').forEach((p) => { p.style.opacity = struck.includes(p.dataset.from) ? 0.15 : 1 })
+    amap.classList.toggle('broken', struck.length > 0)
+    if (state) state.textContent = struck.length ? L.stateSome : L.stateNone
+  }
+
+  document.querySelectorAll('button.toggle').forEach((b) =>
+    b.addEventListener('click', () => {
+      const n = amap.querySelector(`[data-node="${CSS.escape(b.dataset.target)}"]`)
+      if (!n) return
+      const on = n.classList.toggle('struck')
+      b.setAttribute('aria-pressed', String(on))
+      b.textContent = (on ? L.restore : L.strike) + ' · ' + (b.dataset.label || b.dataset.target)
+      sync()
+    }),
+  )
+  new ResizeObserver(drawWires).observe(amap)
+  drawWires()
+})()
+</script>
