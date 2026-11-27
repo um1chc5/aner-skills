@@ -54,6 +54,17 @@ function check(data) {
   const ids = new Set((ps || []).map((p) => p.id))
   for (const [i, t] of (data.tests || []).entries())
     if (t.target && !ids.has(t.target)) errs.push(`tests[${i}].target "${t.target}" is not a premise id`)
+  if (data.sources) {
+    if (!Array.isArray(data.sources.items)) errs.push('sources.items must be an array')
+    else {
+      data.sources.items.forEach((s, i) => {
+        if (!s?.label) errs.push(`sources.items[${i}].label is required`)
+        const urls = s?.url && typeof s.url === 'object' && !Array.isArray(s.url) ? Object.values(s.url) : [s?.url]
+        if (!urls.length || urls.some((u) => typeof u !== 'string' || !/^https?:\/\//i.test(u)))
+          errs.push(`sources.items[${i}].url must be an http(s) URL`)
+      })
+    }
+  }
   // per-language objects should cover every language in "langs"
   const langs = ctvLangs(data)
   const warn = []

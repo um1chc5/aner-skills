@@ -9,6 +9,7 @@ const CTV_LABELS = {
     stateNone: 'Every premise is standing, so the conclusion still follows.',
     stateSome: 'A premise the conclusion needs is gone. It no longer follows.',
     langLabel: 'Language', themeLabel: 'Theme', themeAuto: 'Auto', themeLight: 'Light', themeDark: 'Dark',
+    sources: 'Sources',
   },
   vi: {
     mapTitle: 'Lập luận, viết đầy đủ', vennTitle: 'Cùng khẳng định, vẽ bằng tập hợp', testsTitle: 'Thử từng chỗ yếu',
@@ -17,6 +18,7 @@ const CTV_LABELS = {
     stateNone: 'Mọi tiền đề còn đứng, kết luận vẫn được suy ra.',
     stateSome: 'Một tiền đề mà kết luận cần đã bị gạch. Kết luận không còn đứng được.',
     langLabel: 'Ngôn ngữ', themeLabel: 'Giao diện', themeAuto: 'Tự động', themeLight: 'Sáng', themeDark: 'Tối',
+    sources: 'Nguồn',
   },
 }
 

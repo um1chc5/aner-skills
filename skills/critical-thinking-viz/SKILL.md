@@ -45,6 +45,8 @@ Rules:
 - Criticise the argument, never the person. No mocking.
 - Do not invent statistics, studies or quotes. Hedge general facts ("most couples are within a few years of age") or leave them out.
 - Do not repeat unsourced accusations about real people as facts. Describe them as "claims about celebrities, no source".
+- When the analysis relies on facts from outside the user's text (news, dates, numbers), list them in `sources`, and put a one-line `card.footer` naming them. Mark sources you could not read (paywall, login) as "further reading", not as evidence.
+- Quote premises and the conclusion verbatim from the post where possible (translated for other languages, saying so in `claim.who`), and keep the author's own qualifiers so the map is not a straw man.
 - Keep box text short: about 90 characters for a premise, 120 for a note. The card shrinks text that overflows, but short text reads better.
 
 ## 3. Write the data file
@@ -86,8 +88,10 @@ Write JSON to a scratch location. Every piece of text can be a plain string (sam
       "parallels": [["case", "so … ?", "so"]], "body": ["paragraph, HTML allowed"] }
   ],
   "steelman": { "title": "The charitable reading", "quote": "…", "body": ["…"] },
+  "sources": { "title": "Sources", "items": [
+    { "label": "Wikipedia: …", "url": "https://…", "note": "what this source backs" } ] },
   "labels": { },                      // optional overrides of UI strings (see below)
-  "card": { "eyebrow": "…", "headline": "…", "premises": [{ "note": "shorter" }], "conclusion": {} }
+  "card": { "eyebrow": "…", "headline": "…", "premises": [{ "note": "shorter" }], "conclusion": {}, "footer": "Sources: … · …" }
 }
 ```
 
